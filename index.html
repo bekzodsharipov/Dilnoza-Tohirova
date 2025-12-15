@@ -193,13 +193,16 @@
             text-align: center;
         }
 
-       
+
         .about__title {
             font-family: "Big Shoulders Display", sans-serif;
             text-transform: uppercase;
             font-weight: 800;
             font-size: clamp(33px, 10vw, 38px);
             text-align: center;
+            line-height: 110%;
+            -webkit-text-size-adjust:100%;
+            letter-spacing: .02em;
             margin-bottom: 45px;
         }
 
@@ -284,7 +287,9 @@
             font-family: "Big Shoulders Display", sans-serif;
             font-weight: 800;
             font-size: clamp(33px, 9vw, 38px);
-            line-height: 100%;
+            line-height: 110%;
+            -webkit-text-size-adjust:100%;
+            letter-spacing: .02em;  
             text-align: center;
             text-transform: uppercase;
             margin-bottom: 15px;
@@ -349,8 +354,10 @@
         .course__title {
             font-family: "Big Shoulders Display", sans-serif;
             font-weight: 800;
-            font-size: clamp(25px, 8vw, 38px);
-            line-height: 100%;
+            font-size: clamp(24px, 7vw, 38px);
+            line-height: 110%;
+            -webkit-text-size-adjust:100%;
+            letter-spacing: .02em;
             text-align: center;
             text-transform: uppercase;
             margin-bottom: 13px;
@@ -628,9 +635,7 @@
             }
         }
 
-        @media (max-width:450px) {
-      
-        }
+        @media (max-width:450px) {}
 
         @media (max-width:355px) {
             .event__btn {
@@ -771,7 +776,8 @@
                         </div>
                         <div class="about__list__item__text-wrapper">
                             <h3>Darslar qayerda?</h3>
-                            <p>Darslar yopiq Telegram kanalda <br> bo‘ladi. Haftada bir marta ustoz <br> bilan jonli darslarda qatnashasiz</p>
+                            <p>Darslar yopiq Telegram kanalda <br> bo‘ladi. Haftada bir marta ustoz <br> bilan jonli
+                                darslarda qatnashasiz</p>
                         </div>
                     </div>
                 </div>
