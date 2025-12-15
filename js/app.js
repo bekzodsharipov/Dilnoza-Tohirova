@@ -1,1 +1,223 @@
-function initLandingUI(){initAccordion(),initSwiper(),initTimer24h(),initCustomSelects(),initFormValidation()}function initAccordion(){document.querySelectorAll(".course__col").forEach((i=>{const s=i.querySelector(".course__info"),a=i.querySelector(".course__item");s&&a&&(s.style.height="0px",a.addEventListener("click",(()=>{const a=i.classList.contains("is-open");document.querySelectorAll(".course__col.is-open").forEach((s=>{if(s!==i){const i=s.querySelector(".course__info");s.classList.remove("is-open"),i&&(i.style.height="0px")}})),a?(i.classList.remove("is-open"),s.style.height="0px"):(i.classList.add("is-open"),s.style.height=s.scrollHeight+"px")})),window.addEventListener("resize",(()=>{i.classList.contains("is-open")&&(s.style.height=s.scrollHeight+"px")})))}))}function initSwiper(){document.querySelector(".mySwiper")&&window.Swiper&&new Swiper(".mySwiper",{navigation:{nextEl:".swiper-button-next3",prevEl:".swiper-button-prev3"},spaceBetween:5,centeredSlides:!0,autoplay:{delay:2500,disableOnInteraction:!1},slidesPerView:"auto",autoHeight:!0})}function initTimer24h(){const i=document.querySelector(".bottom_timer");if(!i)return;let s=86400;const a=()=>{const a=Math.floor(s/3600),e=Math.floor(s%3600/60),t=s%60;i.textContent=String(a).padStart(2,"0")+":"+String(e).padStart(2,"0")+":"+String(t).padStart(2,"0"),s<=0&&(clearInterval(n),i.textContent="00:00:00"),s--};a();const n=setInterval(a,1e3)}function initCustomSelects(){const i=document.querySelectorAll(".ank-select");if(!i.length)return;const s=i=>{i.classList.remove("is-open");const s=i.querySelector(".ank-select__btn");s&&s.setAttribute("aria-expanded","false")},a=a=>{i.forEach((i=>{i!==a&&s(i)}))};i.forEach((i=>{const n=i.querySelector(".ank-select__btn"),e=i.querySelector(".ank-select__value"),t=i.querySelector('input[type="hidden"]'),o=i.querySelectorAll(".ank-select__item");n&&e&&t&&(n.addEventListener("click",(e=>{e.stopPropagation();const t=!i.classList.contains("is-open");a(i),t?(i.classList.add("is-open"),n.setAttribute("aria-expanded","true")):s(i)})),o.forEach((a=>{a.addEventListener("click",(l=>{l.stopPropagation(),o.forEach((i=>i.classList.remove("is-active"))),a.classList.add("is-active");const r=a.textContent.trim(),_=a.getAttribute("data-value")||r;e.textContent=r,t.value=_,n.classList.remove("input-error");const c=document.getElementById("leadForm");if(c&&t.name){const i=c.querySelector(`.ank-error[data-error-for="${t.name}"]`);i&&(i.textContent="")}s(i)}))})))})),document.addEventListener("click",(()=>a())),document.addEventListener("keydown",(i=>{"Escape"===i.key&&a()}))}function initFormValidation(){const i=document.getElementById("leadForm");if(!i)return;const s=(i,s,a)=>{s&&(s.textContent=a),i&&i.classList.add("input-error")},a=(i,s)=>{s&&(s.textContent=""),i&&i.classList.remove("input-error")};i.addEventListener("submit",(n=>{let e=!0;const t=i.querySelector("#name"),o=i.querySelector("#nameError");t&&t.value.trim()?a(t,o):(e=!1,s(t,o,"Ismni kiriting"));const l=i.querySelector("#phone"),r=i.querySelector("#phoneError");if((l?.value||"").replace(/\D/g,"").length<9?(e=!1,s(l,r,"Telefon raqamni to‘liq kiriting")):a(l,r),i.querySelectorAll('.ank-select input[type="hidden"][required]').forEach((s=>{const a=(s.value||"").trim(),n=s.closest(".ank-select")?.querySelector(".ank-select__btn"),t=i.querySelector(`.ank-error[data-error-for="${s.name}"]`);a?(t&&(t.textContent=""),n&&n.classList.remove("input-error")):(e=!1,t&&(t.textContent="Variantni tanlang"),n&&n.classList.add("input-error"))})),!e){n.preventDefault();const s=i.querySelector(".input-error");s&&s.scrollIntoView({behavior:"smooth",block:"center"})}})),i.querySelector("#name")?.addEventListener("input",(()=>{a(i.querySelector("#name"),i.querySelector("#nameError"))})),i.querySelector("#phone")?.addEventListener("input",(()=>{a(i.querySelector("#phone"),i.querySelector("#phoneError"))}))}document.addEventListener("DOMContentLoaded",(function(){const i=document.querySelector(".lazyHTML");i&&(i.innerHTML='\n    \n        <section class="webinar-learn webinar-section">\n            <div class="webinar-learn__container container">\n                <h2 class="webinar-heading2">Kurs kimlar uchun?</h2>\n                <ul class="webinar-learn__list">\n                    <li class="webinar-learn__list__item">\n                        <span class="webinar-learn__list__item__number">1</span>\n                        <p class="webinar-learn__list__item__text">\n                            <span>0 dan 3 oy ichida</span> Tikuvchilikni <br> mukammal darajada <br>\n                            o\'rganmoqchi bo\'lganlar\n                        </p>\n                    </li>\n                    <li class="webinar-learn__list__item">\n                        <span class="webinar-learn__list__item__number">2</span>\n                        <p class="webinar-learn__list__item__text">\n                            Tikuvchilikni haqiqiy kasbga <br> aylantirib, shu <span>kasb orqasidan <br> daromad</span>\n                            qilishni xohlaydiganlar\n                        </p>\n                    </li>\n                    <li class="webinar-learn__list__item">\n                        <span class="webinar-learn__list__item__number">3</span>\n                        <p class="webinar-learn__list__item__text">\n                            <span>Uydan chiqmagan holda</span> <br> tikuvchilik kasbini <br> o\'rganmoqchi bo\'lganlar\n                        </p>\n                    </li>\n                    <li class="webinar-learn__list__item">\n                        <span class="webinar-learn__list__item__number">4</span>\n                        <p class="webinar-learn__list__item__text">\n                            Buyurtma olishdan <br> <span>qo\'rqadiganlar</span> uchun\n                        </p>\n                    </li>\n                </ul>\n\n            </div>\n        </section>\n\n        <section class="about">\n            <div class="container about__container">\n                <h2 class="about__title">\n                    kurs haqida ma\'lumot\n                </h2>\n                <div class="about__list">\n                    <div class="about__list__item">\n                        <div class="about__list__item__img-wrapper">\n                            <img loading="lazy" decoding="async" src="./images/about/1.avif" alt="images">\n                        </div>\n                        <div class="about__list__item__text-wrapper">\n                            <h3>Kurs formati</h3>\n                            <p>“O\'z libosingni o\'zing yarat” <br> Nomli onlayn kurs</p>\n                        </div>\n                    </div>\n                    <div class="about__list__item">\n                        <div class="about__list__item__img-wrapper">\n                            <img loading="lazy" decoding="async" src="./images/about/2.avif" alt="images">\n                        </div>\n                        <div class="about__list__item__text-wrapper">\n                            <h3>2 ta kurator</h3>\n                            <p>Qo’shimcha ustozlaringiz <br> bo’ladi va ular darslarda sizga <br> doimiy yordam\n                                berishadi</p>\n                        </div>\n                    </div>\n                    <div class="about__list__item">\n                        <div class="about__list__item__img-wrapper">\n                            <img loading="lazy" decoding="async" src="./images/about/3.avif" alt="images">\n                        </div>\n                        <div class="about__list__item__text-wrapper">\n                            <h3>kurs muddati</h3>\n                            <p>Kursimiz qulay onlayn formatda <br> bo‘lib, davomiyligi — 3 oy.</p>\n                        </div>\n                    </div>\n                    <div class="about__list__item">\n                        <div class="about__list__item__img-wrapper">\n                            <img loading="lazy" decoding="async" src="./images/about/4.avif" alt="images">\n                        </div>\n                        <div class="about__list__item__text-wrapper">\n                            <h3>Darslar qayerda?</h3>\n                            <p>Darslarimiz yopiq Telegram <br> kanalda bo’lib o’tadi va kun- <br>ora video darslar\n                                yuboriladi</p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </section>\n\n\n        <section class="teacher">\n            <div class="container teacher__container">\n                <h2 class="teacher__title">Ustozingiz kiM?</h2>\n                <img src="./images/title.avif" loading="lazy" decoding="async" width="440" height="30" alt="title"\n                    style="margin-bottom: 13px;  width: 100%; object-fit: cover;">\n\n                <div class="teacher__box">\n                    <div class="teacher__images">\n                        <img src="./images/speakerSecond.avif" width="172" height="321" loading="lazy" decoding="async"\n                            alt="Dilnoza Tohirova">\n                    </div>\n\n                    <div class="teacher__col">\n                        <div class="teacher__item">\n                            <h3 class="teacher__item__title">20 yillik tajriba</h3>\n                            <p class="teacher__item__text"><span>- Xalqaro toifadagi</span> Modelyer, <br> Konstruktor\n                                va Tikuvchi</p>\n                            <p class="teacher__item__text">- Markaziy Osiyo Moda ittifoqi a’zosi</p>\n                            <p class="teacher__item__text">- Bukhara Fashion Week, Aspara <br> Fashion Week <span>moda\n                                    haftaliklari <br> qatnashuvchisi</span></p>\n                        </div>\n                        <div class="teacher__item">\n                            <h3 class="teacher__item__title">Natijalar</h3>\n                            <p class="teacher__item__text">- 6.000+ mijozlar</p>\n                            <p class="teacher__item__text">- Hozirgacha 587 nafar <br> o’quvchilarni <span>0 dan\n                                    professional <br> darajaga</span> olib chiqdilar</p>\n                            <p class="teacher__item__text">- DT Akademiyasi <span>asoschisi</span></p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </section>\n\n\n        <section class="course">\n            <div class="container course__container">\n                <h2 class="course__title">kursda nimalarni o’rganasiz?</h2>\n                <div class="course__row">\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">1-<span>modul</span> - Kirish</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">2-<span>modul</span> -\n                                Yengil ustki kiyimlar</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">3-<span>modul</span> -\n                                Yeng</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">4-<span>modul</span> -\n                                Reglan yeng</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">5-<span>modul</span> -\n                                Yoqalar</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">6-<span>modul</span> -\n                                Cho’ntak</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">7-<span>modul</span> -\n                                Murakkab fasonlar</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">8-<span>modul</span> -\n                                Karset va oqshom liboslari</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                    <div class="course__col">\n                        <div class="course__item">\n                            <h3 class="course__col__title">9-<span>modul</span> -\n                                Kostyum-shim</h3>\n                            <svg class="course__arrow" width="17" height="10" viewBox="0 0 17 10" fill="none"\n                                xmlns="http://www.w3.org/2000/svg">\n                                <path\n                                    d="M14.9262 0.366079C15.4004 -0.122026 16.1702 -0.122026 16.6444 0.366079C17.1185 0.854184 17.1185 1.64659 16.6444 2.1347L9.35908 9.63392C8.8849 10.122 8.1151 10.122 7.64092 9.63392L0.355635 2.1347C-0.118545 1.64659 -0.118545 0.854184 0.355635 0.366079C0.829815 -0.122026 1.59962 -0.122026 2.0738 0.366079L8.5 6.981L14.9262 0.366079Z"\n                                    fill="#E3035F" />\n                            </svg>\n                        </div>\n\n                        <div class="course__info">\n                            <p class="course__info__text">1. Yengil ustki kiyimlar uchun o’lchov olish</p>\n                            <p class="course__info__text">2. Formula bilan ishlash ( qo’shimcha haqlar bilan ishlash)\n                            </p>\n                            <p class="course__info__text">3. Asos andoza tayyorlash 1, 2, 3, 4 etaplar</p>\n                            <p class="course__info__text">4. Andozani millimetr qog’ozga chizish va kesish</p>\n                            <p class="course__info__text">5. Andozani matoga tog’ri joylashtirish</p>\n                            <p class="course__info__text">6. Bichish va tikish texnikalari </p>\n                            <p class="course__info__text">7. Dazmol bilan tog’ri ishlash</p>\n                            <p class="course__info__text">8. Andoza vitochkalarini ko’chirish va modellashtirish <br>\n                                ( Amaliy va Nazariy)</p>\n                        </div>\n                    </div>\n                </div>\n                <a class="event__btn registerBtn" href="./question.html" style="margin-bottom: 50px;">\n                    Kursga qatnashish\n                </a>\n\n                <div class="course__cols">\n                    <div class="course__cols__card">\n                        <div class="course__cols__card__img">\n                            <img src="./images/course/after.avif" width="324" height="192" loading="lazy" decoding="async" alt="after">\n                        </div>\n                        <h3 class="course__cols__title">Oldingi siz:</h3>\n\n                        <ul class="course__cols__card__list">\n                            <li class="course__cols__card__list__item">Boshlamoqchisiz, lekin xato qilib <span>vaqt va\n                                    pulni</span> <br> yo‘qotishdan qo‘rqasiz</li>\n                            <li class="course__cols__card__list__item">Tikkan kiyimingizni ko‘rib <span>“yana\n                                    buzdim”</span> <br> deb hafsalangiz pir bo‘ladi.</li>\n                            <li class="course__cols__card__list__item">Tikuvchilikdan topayotgan <br> <span>daromadingiz\n                                    hech narsaga</span> yetmaydi</li>\n                            <li class="course__cols__card__list__item">Buyurtma olishni xohlaysiz, lekin <br>\n                                <span>o‘zingizga ishonmaysiz</span>\n                            </li>\n                        </ul>\n                    </div>\n\n                    <div class="course__cols__card">\n                        <div class="course__cols__card__img">\n                            <img src="./images/course/before.avif" width="324" height="192" loading="lazy" decoding="async" alt="before">\n                        </div>\n                        <h3 class="course__cols__title">Kursdan keyingi siz:</h3>\n\n                        <ul class="course__cols__card__list">\n                            <li class="course__cols__card__list__item">Bittada <span>qolipday tushadigan\n                                    liboslarni</span> <br> tikishni boshlaysiz</li>\n                            <li class="course__cols__card__list__item">Tikkan libosingiz o’zingizga yoqadi, <br>\n                                <span>qayta-qayta buzib tikishga</span> hojat yo‘q.\n                            </li>\n                            <li class="course__cols__card__list__item">Kursda aktiv qatnashib bilimlarni to’liq <br>\n                                egallaganingizdan so’ng <span>oyiga 3mln dan <br>\n                                    10 mln gacha daromad</span> qilishni boshlaysiz</li>\n                            <li class="course__cols__card__list__item">Buyurtma kelganda <span>qo‘rqmaysiz,</span> har\n                                bir <br> ishni ishonch bilan olasiz.</span>\n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </section>\n\n        <section class="">\n            <div class="all_results__container container">\n                <div class="all__results__box">\n                    <div class="course__top">\n                        <h2 class="teacher__title">o’quvchilarim fikrlari</h2>\n                    </div>\n                </div>\n\n\n                \x3c!-- Swiper --\x3e\n                <div class="swiper mySwiper">\n                    <div class="swiper-wrapper">\n                        <div class="swiper-slide">\n                            <img loading="lazy" decoding="async" width="267" height="561" src="./images/comments/1.avif"\n                                alt="comment" class="coments__img">\n                        </div>\n                        <div class="swiper-slide">\n                            <img loading="lazy" decoding="async" width="267" height="561" src="./images/comments/1.avif"\n                                alt="comment" class="coments__img">\n                        </div>\n                        <div class="swiper-slide">\n                            <img loading="lazy" decoding="async" width="267" height="561" src="./images/comments/1.avif"\n                                alt="comment" class="coments__img">\n                        </div>\n                        <div class="swiper-slide">\n                            <img loading="lazy" decoding="async" width="267" height="561" src="./images/comments/1.avif"\n                                alt="comment" class="coments__img">\n                        </div>\n                    </div>\n                    <div class="swiper-button-next3">\n                        <img src="./images/right-arrow.png" alt="arrow" decoding="async" loading="lazy"\n                            style="transform: rotate(180deg);" width="7" height="10">\n                    </div>\n                    <div class="swiper-button-prev3">\n                        <img src="./images/right-arrow.png" alt="arrow" decoding="async" loading="lazy" width="7"\n                            height="10">\n                    </div>\n                </div>\n                <a class="event__btn registerBtn" href="./question.html" style="margin-bottom: 84px;">\n                    Kursga qatnashish\n                </a>\n            </div>\n        </section>\n    ',initLandingUI())}));
+document.addEventListener("DOMContentLoaded", () => {
+    /* ---------------------------
+     * 1) Accordion (course__col)
+     * --------------------------- */
+    document.querySelectorAll(".course__col").forEach((col) => {
+      const info = col.querySelector(".course__info");
+      const header = col.querySelector(".course__item");
+      if (!info || !header) return;
+  
+      info.style.height = "0px";
+  
+      header.addEventListener("click", () => {
+        const isOpen = col.classList.contains("is-open");
+  
+        document.querySelectorAll(".course__col.is-open").forEach((openCol) => {
+          if (openCol !== col) {
+            const openInfo = openCol.querySelector(".course__info");
+            openCol.classList.remove("is-open");
+            if (openInfo) openInfo.style.height = "0px";
+          }
+        });
+  
+        if (isOpen) {
+          col.classList.remove("is-open");
+          info.style.height = "0px";
+        } else {
+          col.classList.add("is-open");
+          info.style.height = info.scrollHeight + "px";
+        }
+      });
+  
+      window.addEventListener("resize", () => {
+        if (col.classList.contains("is-open")) {
+          info.style.height = info.scrollHeight + "px";
+        }
+      });
+    });
+  
+    /* ---------------------------
+     * 2) Swiper (if exists)
+     * --------------------------- */
+    if (document.querySelector(".mySwiper") && window.Swiper) {
+      new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next3",
+          prevEl: ".swiper-button-prev3",
+        },
+        spaceBetween: 5,
+        centeredSlides: true,
+        autoplay: { delay: 2500, disableOnInteraction: false },
+        slidesPerView: "auto",
+        autoHeight: true,
+      });
+    }
+  
+    /* ---------------------------
+     * 3) 24h Timer
+     * --------------------------- */
+    const timerEl = document.querySelector(".bottom_timer");
+    if (timerEl) {
+      let totalSeconds = 24 * 60 * 60;
+  
+      const tick = () => {
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+  
+        timerEl.textContent =
+          String(h).padStart(2, "0") +
+          ":" +
+          String(m).padStart(2, "0") +
+          ":" +
+          String(s).padStart(2, "0");
+  
+        if (totalSeconds <= 0) {
+          clearInterval(intv);
+          timerEl.textContent = "00:00:00";
+        }
+        totalSeconds--;
+      };
+  
+      tick();
+      const intv = setInterval(tick, 1000);
+    }
+  
+    /* ---------------------------
+     * 4) Custom Select (ank-select)
+     * --------------------------- */
+    const selects = document.querySelectorAll(".ank-select");
+  
+    const closeSelect = (sel) => {
+      sel.classList.remove("is-open");
+      const btn = sel.querySelector(".ank-select__btn");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    };
+  
+    const closeAll = (except) => {
+      selects.forEach((s) => {
+        if (s !== except) closeSelect(s);
+      });
+    };
+  
+    selects.forEach((sel) => {
+      const btn = sel.querySelector(".ank-select__btn");
+      const valueEl = sel.querySelector(".ank-select__value");
+      const hidden = sel.querySelector('input[type="hidden"]');
+      const items = sel.querySelectorAll(".ank-select__item");
+  
+      if (!btn || !valueEl || !hidden) return;
+  
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const willOpen = !sel.classList.contains("is-open");
+        closeAll(sel);
+        if (willOpen) {
+          sel.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        } else {
+          closeSelect(sel);
+        }
+      });
+  
+      items.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+  
+          items.forEach((i) => i.classList.remove("is-active"));
+          item.classList.add("is-active");
+  
+          const text = item.textContent.trim();
+          const val = item.getAttribute("data-value") || text;
+  
+          valueEl.textContent = text;
+          hidden.value = val;
+  
+          // error style remove
+          btn.classList.remove("input-error");
+          const form = document.getElementById("leadForm");
+          if (form && hidden.name) {
+            const err = form.querySelector(`.ank-error[data-error-for="${hidden.name}"]`);
+            if (err) err.textContent = "";
+          }
+  
+          closeSelect(sel); // ✅ tanlaganda yopiladi
+        });
+      });
+    });
+  
+    document.addEventListener("click", () => closeAll());
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAll();
+    });
+  
+    /* ---------------------------
+     * 5) Form validation + redirect
+     * --------------------------- */
+    const form = document.getElementById("leadForm");
+    if (!form) return;
+  
+    const setError = (inputEl, errorEl, msg) => {
+      if (errorEl) errorEl.textContent = msg;
+      if (inputEl) inputEl.classList.add("input-error");
+    };
+    const clearError = (inputEl, errorEl) => {
+      if (errorEl) errorEl.textContent = "";
+      if (inputEl) inputEl.classList.remove("input-error");
+    };
+  
+    form.addEventListener("submit", (e) => {
+      let ok = true;
+  
+      // name
+      const nameInput = form.querySelector("#name");
+      const nameErr = form.querySelector("#nameError");
+      if (!nameInput || !nameInput.value.trim()) {
+        ok = false;
+        setError(nameInput, nameErr, "Ismni kiriting");
+      } else {
+        clearError(nameInput, nameErr);
+      }
+  
+      // phone (>= 9 digits)
+      const phoneInput = form.querySelector("#phone");
+      const phoneErr = form.querySelector("#phoneError");
+      const digits = (phoneInput?.value || "").replace(/\D/g, "");
+      if (digits.length < 9) {
+        ok = false;
+        setError(phoneInput, phoneErr, "Telefon raqamni to‘liq kiriting");
+      } else {
+        clearError(phoneInput, phoneErr);
+      }
+  
+      // required hidden selects
+      form.querySelectorAll('.ank-select input[type="hidden"][required]').forEach((hidden) => {
+        const v = (hidden.value || "").trim();
+        const btn = hidden.closest(".ank-select")?.querySelector(".ank-select__btn");
+        const err = form.querySelector(`.ank-error[data-error-for="${hidden.name}"]`);
+  
+        if (!v) {
+          ok = false;
+          if (err) err.textContent = "Variantni tanlang";
+          if (btn) btn.classList.add("input-error");
+        } else {
+          if (err) err.textContent = "";
+          if (btn) btn.classList.remove("input-error");
+        }
+      });
+  
+      if (!ok) {
+        e.preventDefault();
+        const first = form.querySelector(".input-error");
+        if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  
+    form.querySelector("#name")?.addEventListener("input", () => {
+      clearError(form.querySelector("#name"), form.querySelector("#nameError"));
+    });
+    form.querySelector("#phone")?.addEventListener("input", () => {
+      clearError(form.querySelector("#phone"), form.querySelector("#phoneError"));
+    });
+  });
+  
